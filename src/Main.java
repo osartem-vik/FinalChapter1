@@ -37,11 +37,10 @@ public class Main {
                     System.out.println("Введите ключ для дешифрования:");
                     int decryptShift = scanner.nextInt();
                     String decrypted = cipher.decrypt(content, decryptShift);
-                    outputFilePath = filePath.replace(".txt", "_decrypted.txt");
+                    outputFilePath =filePath.replace(".txt", "_decrypted.txt");
                     writer.write(outputFilePath, decrypted);
                     System.out.println("Расшифровано в: " + outputFilePath);
                     break;
-
                 case 3: // Брутфорс
                     outputFilePath = filePath.replace(".txt", "_bruteforce");
                     bruteForce.attemptDecryption(content, outputFilePath);
