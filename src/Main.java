@@ -9,6 +9,7 @@ public class Main {
         CaesarCipher cipher = new CaesarCipher();
         BruteForcer bruteForce = new BruteForcer(scanner);
 
+
         System.out.println("Введите путь к файлу:");
         String filePath = scanner.nextLine();
 
