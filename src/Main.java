@@ -1,10 +1,11 @@
 // Главный класс
 public class Main {
     public static void main(String[] args) {
+
         if (args.length < 2) {
-            System.out.println("Использование: java Main <путь_к_файлу> <команда> [ключ]");
-            System.out.println("Команды: encrypt, decrypt, bruteforce");
-            System.out.println("Ключ обязателен для encrypt и decrypt");
+            System.out.println("To run the program: java -jar FinalChapter1.jar <path_to_file> <command> [key]");
+            System.out.println("Commands: encrypt, decrypt, bruteforce");
+            System.out.println("A key is required for encryption or decryption");
             return;
         }
         String filePath = args[0];
