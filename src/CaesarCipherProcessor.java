@@ -55,10 +55,6 @@ public class CaesarCipherProcessor {
             }
         } catch (IOException e) {
             System.out.println("Error processing file: " + e.getMessage());
-        } catch (NumberFormatException e) {
-            System.out.println("The key must be numeric: " + e.getMessage());
-        } catch (IllegalArgumentException e) {
-            System.out.println("Argument input error: " + e.getMessage());
         }
     }
 }
