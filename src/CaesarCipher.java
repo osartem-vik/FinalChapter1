@@ -8,7 +8,7 @@ public class CaesarCipher {
                     char base = Character.isUpperCase(character) ? 'A' : 'a';
                     int originalPosition = character - base;
                     int newPosition = (originalPosition + shift) % 26;
-                    if (newPosition < 0) newPosition += 26; // For correct encryption
+                    if (newPosition < 0) newPosition += 26;
                     char newCharacter = (char) (base + newPosition);
                     result.append(newCharacter);
                 }
@@ -16,7 +16,7 @@ public class CaesarCipher {
                     char base = Character.isUpperCase(character) ? 'А' : 'а';
                     int originalPosition = character - base;
                     int newPosition = (originalPosition + shift) % 32;
-                    if (newPosition < 0) newPosition += 32; // For correct encryption
+                    if (newPosition < 0) newPosition += 32;
                     char newCharacter = (char) (base + newPosition);
                     result.append(newCharacter);
                 }
