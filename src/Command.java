@@ -24,6 +24,6 @@ enum Command {
                 return command;
             }
         }
-        throw new IllegalArgumentException("Invalid command. Use: encrypt, decrypt or bruteforce");
+        throw CaesarCipherException.invalidCommand();
     }
 }
