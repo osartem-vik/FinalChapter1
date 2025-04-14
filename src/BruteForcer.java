@@ -5,14 +5,7 @@ import java.util.Scanner;
 
 public class BruteForcer {
     private final CaesarCipher cipher;
-    private final int MOST_FREQ_LETTER_LAT = 101;
-    private final int MOST_FREQ_LETTER_CYR = 1086;
-    private final int QUANTITY_LETTER_CYR = 32;
-    private final int QUANTITY_LETTER_LAT = 26;
-    private final char FIRST_LETTER_LAT = 'A';
-    private final char FIRST_SMALL_LETTER_LAT = 'a';
-    private final char FIRST_LETTER_CYR = 'А';
-    private final char FIRST_SMALL_LETTER_CYR = 'а';
+
     public BruteForcer() {
         this.cipher = new CaesarCipher();
     }
@@ -20,7 +13,7 @@ public class BruteForcer {
 
     public void attemptDecryption(String encryptedText, String outputPath) {
         IOFile IOFile = new IOFile();
-        int quantAttempt = isLatinText(mostFrequencyChar(encryptedText)) ? QUANTITY_LETTER_LAT : QUANTITY_LETTER_CYR;
+        int quantAttempt = isLatinText(mostFrequencyChar(encryptedText)) ? Constants.QUANTITY_LETTER_LAT : Constants.QUANTITY_LETTER_CYR;
         for (int shift = 0; shift < quantAttempt; shift++) {
             String decrypted = cipher.decrypt(encryptedText, shift);
             String[] lines = decrypted.split("\n");
@@ -63,19 +56,19 @@ public class BruteForcer {
     }
     private String stringProcessor(String encryptedText) {
         StringBuilder result = new StringBuilder();
-        int shift = -1;
+        int shift = 0;
         char firstLet = ' ', firstLetSmall = ' ';
         int quantLetters = 0;
         if (isLatinText(mostFrequencyChar(encryptedText))) {
-            shift = mostFrequencyChar(encryptedText) - MOST_FREQ_LETTER_LAT;
-            firstLet = FIRST_LETTER_LAT;
-            firstLetSmall = FIRST_SMALL_LETTER_LAT;
-            quantLetters = QUANTITY_LETTER_LAT;
+            shift = mostFrequencyChar(encryptedText) - Constants.MOST_FREQ_LETTER_LAT;
+            firstLet = Constants.FIRST_LETTER_LAT;
+            firstLetSmall = Constants.FIRST_SMALL_LETTER_LAT;
+            quantLetters = Constants.QUANTITY_LETTER_LAT;
         } else if (isCyrilicText(mostFrequencyChar(encryptedText))) {
-            shift = mostFrequencyChar(encryptedText) - MOST_FREQ_LETTER_CYR;
-            firstLet = FIRST_LETTER_CYR;
-            firstLetSmall = FIRST_SMALL_LETTER_CYR;
-            quantLetters = QUANTITY_LETTER_CYR;
+            shift = mostFrequencyChar(encryptedText) - Constants.MOST_FREQ_LETTER_CYR;
+            firstLet = Constants.FIRST_LETTER_CYR;
+            firstLetSmall = Constants.FIRST_SMALL_LETTER_CYR;
+            quantLetters = Constants.QUANTITY_LETTER_CYR;
         }
         for (char character : encryptedText.toCharArray()) {
             if (Character.isLetter(character)) {
@@ -92,11 +85,11 @@ public class BruteForcer {
     }
 
     private boolean isLatinText(char mostFreqChar) {
-        return mostFreqChar >= 65 && mostFreqChar <= 122;
+        return mostFreqChar >= Constants.FIRST_LETTER_LAT && mostFreqChar <= Constants.LAST_LETTER_LAT;
     }
 
     private boolean isCyrilicText(char mostFreqChar) {
-        return mostFreqChar >= 1024 && mostFreqChar <= 1279;
+        return mostFreqChar >= Constants.FIRST_LETTER_CYR && mostFreqChar <= Constants.LAST_LETTER_CYR;
     }
 
     public void automaticalyBrut(String encryptedText, String outputPath) {
