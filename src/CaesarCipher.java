@@ -4,19 +4,19 @@ public class CaesarCipher {
         StringBuilder result = new StringBuilder();
         for (char character : text.toCharArray()) {
             if (Character.isLetter(character)) {
-                if (character >= 65 && character <= 122) {
-                    char base = Character.isUpperCase(character) ? 'A' : 'a';
+                if (character >= Constants.FIRST_LETTER_LAT && character <= Constants.LAST_LETTER_LAT) {
+                    char base = Character.isUpperCase(character) ? Constants.FIRST_LETTER_LAT : Constants.FIRST_SMALL_LETTER_LAT;
                     int originalPosition = character - base;
-                    int newPosition = (originalPosition + shift) % 26;
-                    if (newPosition < 0) newPosition += 26;
+                    int newPosition = (originalPosition + shift) % Constants.QUANTITY_LETTER_LAT;
+                    if (newPosition < 0) newPosition += Constants.QUANTITY_LETTER_LAT;
                     char newCharacter = (char) (base + newPosition);
                     result.append(newCharacter);
                 }
-                if (character >= 1024 && character <= 1279) {
-                    char base = Character.isUpperCase(character) ? 'А' : 'а';
+                if (character >= Constants.FIRST_LETTER_CYR && character <= Constants.LAST_LETTER_CYR) {
+                    char base = Character.isUpperCase(character) ? Constants.FIRST_LETTER_CYR : Constants.FIRST_SMALL_LETTER_CYR;
                     int originalPosition = character - base;
-                    int newPosition = (originalPosition + shift) % 32;
-                    if (newPosition < 0) newPosition += 32;
+                    int newPosition = (originalPosition + shift) % Constants.QUANTITY_LETTER_CYR;
+                    if (newPosition < 0) newPosition += Constants.QUANTITY_LETTER_CYR;
                     char newCharacter = (char) (base + newPosition);
                     result.append(newCharacter);
                 }
